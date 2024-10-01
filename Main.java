@@ -18,6 +18,8 @@ public class Main {
     end while
      */
 
+
+
     class Population{
 
     }

@@ -19,6 +19,8 @@ public class Machine {
     int getX(){return x;}
     int getY(){return y;}
     void display(){}
+    int getWidth(){return type.getWidth();}
+    int getHeight(){return type.getHeight();}
 
 }
 

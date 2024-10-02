@@ -1,18 +1,45 @@
 package src.main.lib;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.awt.*;
+import java.util.Random;
 
 
 public class Floor {
-    private Station[] stations;
-    JFrame frame;
+    private List<Machine> machines;
+    private final int h;
+    private final int w;
 
-    Floor(JFrame frame){
-        this.frame = frame;
-        this.frame.setSize(800, 800);
+    Floor(int h, int w){
+        this.h = h;
+        this.w = w;
+        machines = new ArrayList<>();
+    }
+
+    void load(int num){
+        ArrayList<MachineType> types = new ArrayList<MachineType>(Arrays.asList(MachineType.values()));
+        for (int i = 0; i < num; i++) {
+            Random rdm = new Random();
+            int idx = rdm.nextInt(types.size());
+            machines.add(new Machine(types.get(idx) , rdm.nextInt(w), rdm.nextInt(h)));
+        }
+    }
+
+    public static void main(String[] args) {
+        Floor f = new Floor(1000, 1000);
+        f.load(11);
+        VisFloor vf = new VisFloor();
+        vf.addMachines(f.machines);
+        JFrame frame = new JFrame("Floor");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(f.h, f.w);
+
+        frame.getContentPane().add(vf);
+        frame.setVisible(true);
+
     }
 
     private static final double [] [] AFFINITY = {
@@ -49,23 +76,17 @@ public class Floor {
         return Math.sqrt(dx * dx + dy * dy);
     }
 
-    class Station {
-        public void draw(JFrame frame) {
-            frame.add(new JPanel() {
-                public void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    g.drawRect(50, 50, 200, 100);
-                }
-            });
-            frame.setVisible(true);
-        }
+}
 
+class VisFloor extends JComponent {
+    List<Machine> machines = new ArrayList<>();
+    public void addMachines(List<Machine> machines){
+        this.machines = machines;
     }
-
-    void draw(){
-        for (int i = 0; i < stations.length; i++) {
-            stations[i].draw(frame);
-
+    public void paint(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        for (Machine m : machines){
+            g2.drawRect(m.getX(), m.getY(), m.getWidth(), m.getHeight());
         }
     }
 }

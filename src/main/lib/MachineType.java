@@ -1,10 +1,10 @@
 package src.main.lib;
 
 public enum MachineType {
-    M1(10,10),
-    M2(10,20),
-    M3(25, 25),
-    M4(15, 20);
+    M1(100,100),
+    M2(100,200),
+    M3(250, 250),
+    M4(150, 200);
 
     private final int width;
     private final int height;

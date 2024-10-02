@@ -9,6 +9,7 @@ public enum MachineType {
     private final int width;
     private final int height;
 
+
     MachineType(int width, int height) {
         this.width = width;
         this.height = height;

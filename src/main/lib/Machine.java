@@ -3,20 +3,22 @@ package src.main.lib;
 import java.awt.*;
 
 public class Machine {
-    MachineType type;
+    private MachineType type;
     //(x, y) cartesian coords of machine
-    int height, width, x, y;
+    private final int x;
+    private final int y;
 
 
-    Machine(Machine.TYPE type, int x, int y){
+    Machine(MachineType type, int x, int y){
         this.type = type;
-
         this.x = x;
         this.y = y;
 
     }
-
-    void display()
+    MachineType getType(){return type;}
+    int getX(){return x;}
+    int getY(){return y;}
+    void display(){}
 
 }
 

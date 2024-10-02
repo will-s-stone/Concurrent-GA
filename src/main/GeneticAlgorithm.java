@@ -1,4 +1,9 @@
-public class Main {
+package src.main;
+
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Exchanger;
+
+public class GeneticAlgorithm {
     /*
     Here is the pseudo-code for implementing the Genetic Algorithm:
 
@@ -18,19 +23,6 @@ public class Main {
     end while
      */
 
-
-
-    class Population{
-
-    }
-
-    class Individual{
-
-    }
-
-    class Worker implements Runnable{
-
-    }
 
 
 

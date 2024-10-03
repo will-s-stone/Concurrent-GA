@@ -1,4 +1,6 @@
 package src.main.lib;
 
-public class FloorManager {
+import java.util.concurrent.Exchanger;
+
+public class FloorManager  extends Exchanger {
 }

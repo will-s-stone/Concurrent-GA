@@ -39,6 +39,7 @@ public class Floor {
 
         frame.getContentPane().add(vf);
         frame.setVisible(true);
+        System.out.println(calcProd(f.machines));
 
     }
 
